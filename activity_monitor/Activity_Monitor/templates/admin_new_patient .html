@@ -1,0 +1,210 @@
+_{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Icon -->
+    <!--link rel="icon" href="{% static 'img/favicon.ico' %}"-->
+
+    <title>ADMIN PAGE</title>
+    
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vehicle.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse no-margin navbar-fixed-top">
+        <div class="collapse navbar-collapse">
+            <span class="navbar-brand"><i class="fa fa-home fa-4"></i> Fetal Activity Monitor </span>
+            <ul class="nav navbar-nav navbar-right" id="Profile" >
+                <li><a href="/logout/"  class="fa fa-sign-out fa-stack-1x "> Log Out</a></li>
+            </ul>      
+        </div>  
+    </nav>   
+    <div id="page-content-wrapper">
+        <div class="well">
+         <form id="user_form" method="post" action="/admin_dashboard/add_user/" enctype="multipart/form-data" class="form-group">
+                {% csrf_token %}
+                {{ form.errors }}
+                {{ form.non_field_errors }}
+            <div class="row">
+                <div class="col-sm-3">
+                    &nbsp;                         
+                </div>
+                <div class="col-sm-6">
+                    <h2 class="form-heading pull-left">
+                    
+                        {% if registered %}
+                        <strong>Thank you for adding a patient!</strong>
+                        <a href="/admin_home/">Return to the homepage.</a><br />
+                        {% else %}
+                    </h2>
+                </div>
+                <div class="col-sm-3">
+                    &nbsp;                         
+                </div>   
+            </div>
+            </br></br>
+            <div class="row">
+                <div class="col-sm-4">
+                    &nbsp;                         
+                </div>
+                <div class="col-sm-4">        
+				<div class="col-sm-6">
+                    <h2 class="form-heading pull-left">
+                        Patient Information
+                    </h2>
+                </div>
+                    <div class="row">
+                    	<div class="col-sm-12">
+                            <h4>First name</h4>
+    						<p> <input id="id_first_name" maxlength="20" class="form-control " name="first_name" type="text" required /></p>
+                    	</div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-sm-12">
+                            <h4>Middle name</h4>
+    						<p> <input id="id_middle_name" maxlength="20" class="form-control " name="middle_name" type="text" required /></p>
+                    	</div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-sm-12">	
+                            <h4>Last name</h4>	
+    						<p> <input id="id_last_name"  maxlength="20" class="form-control " name="last_name" type="text" required /></p>
+                    	</div>
+                    </div>
+                    <div class="row">
+                		<div class="col-sm-12">
+                            <h4>Sex</h4>
+                            <label class="radio-inline"><input type="radio" name="sex" value="M"  checked>Male</label>
+                            <label class="radio-inline"><input type="radio" name="sex" value="F" >Female</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        	<h4>BirthDay</h4>
+    						<p> <input id="id_birthday" name="birthday" class="form-control " type="text" /></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Age</h4>
+                            <p> <input id="id_age" name="age" class="form-control " type="text" /></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        	<h4>Tel</h4>
+    						<p><input id="id_tel" maxlength="14" name="tel" class="form-control " type="text" required /></p>
+                        </div>
+                    </div>
+                    <!--div class="row">
+                    	<div class="col-sm-12">
+                    		<h4>Profile Pic</h4>
+    						<p> <input id="id_photo" name="photo" type="file" /></p>
+                    	</div>
+                        <div class="col-sm-12">
+                            &nbsp;
+                        </div>
+                    </div-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Address</h4>
+                            <p><textarea cols="40" id="id_address" name="address"  class="form-control " rows="1" required>
+                               </textarea>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    &nbsp;                         
+                </div>
+            </div>
+</br></br></br>
+            <div class="row">
+                <div class="col-sm-3">
+                    &nbsp;                         
+                </div>
+                <div class="col-sm-6">
+                    <h2 class="form-heading pull-left">
+                        Patient Information
+                    </h2>
+                </div>
+                <div class="col-sm-3">
+                    &nbsp;                         
+                </div>   
+            </div>
+</br></br>
+            <div class="row">
+                <div class="col-sm-4">
+                    &nbsp;                         
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Gestational Age</h4>
+                            <p> <input id="id_hospitalID" maxlength="30" name="hospitalID" class="form-control " type="text" required /></p>
+                        </div>
+                    </div> 
+                     <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Assign Practitioner</h4>
+                            <select id="id_assign" name="assign" class="form-control ">
+                   
+                            <option value="" selected="selected">---------</option>
+                            {%for practitioner in practitioners %}
+                            <option value="{{practitioner.id}}">{{practitioner.systemuser.first_name}} </option>
+                            {%endfor%}
+                            </select>
+                            
+                        </div>     
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col-sm-12">
+                        <h4>Status</h4>
+                         <select id="id_status" name="status" class="form-control " required>
+                            <option value="" selected="selected">---------</option>
+                            <option value="A">active</option>
+                            <option value="D">not active</option>
+                       </select>
+                        </div>
+                    </div>
+                   
+                   
+                    
+                   
+                </div>
+                <div class="col-sm-4">
+                    &nbsp;
+                </div>
+            </div>
+</br></br>
+                <div class="row">
+                	<div class="col-sm-5">
+                		&nbsp;
+                	</div>
+                	<div class="col-sm-2">
+                		<button href="/admin_login/"class="btn btn-lg btn-default btn-block" value="submit" type="submit">Submit</button>
+                	</div>
+                    <div class="col-sm-5">
+                        &nbsp;
+                    </div>
+                </div>		
+			</form>
+				
+			{% endif %}
+	    </div>
+	</div> 
+	         			
+</body>
+</html>

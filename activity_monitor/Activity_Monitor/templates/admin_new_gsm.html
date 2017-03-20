@@ -1,0 +1,97 @@
+_{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Icon -->
+    <!--link rel="icon" href="{% static 'img/favicon.ico' %}"-->
+
+    <title>ADMIN PAGE</title>
+    
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vehicle.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse no-margin navbar-fixed-top">
+        <div class="collapse navbar-collapse">
+            <span class="navbar-brand"><i class="fa fa-home fa-4"></i> Fetal Activity Monitor </span>
+            <ul class="nav navbar-nav navbar-right" id="Profile" >
+                <li><a href="/logout/"  class="fa fa-sign-out fa-stack-1x "> Log Out</a></li>
+            </ul>      
+        </div>  
+    </nav>   
+    <div id="page-content-wrapper">
+        <div class="well">
+         <form id="gsmdevice_form" method="post" action="/admin_dashboard/add_gsm/" enctype="multipart/form-data" class="form-group">
+                {% csrf_token %}
+                {{ form.errors }}
+                {{ form.non_field_errors }}
+            <div class="row">
+                <div class="col-sm-3">
+                    &nbsp;                         
+                </div>
+                <div class="col-sm-6">
+                    <h2 class="form-heading pull-left">
+                    
+                        {% if registered %}
+                        <strong>You have added the monitor!</strong>
+                        <a href="/admin_home">Return to the homepage.</a><br />
+                        {% else %}
+                    </h2>
+                </div>
+                <div class="col-sm-3">
+                    &nbsp;                         
+                </div>   
+            </div>
+            </br></br>
+            <div class="row">
+                <div class="col-sm-4">
+                    &nbsp;                         
+                </div>
+                <div class="col-sm-4">        
+				
+                    <div class="row">
+                    	<div class="col-sm-12">
+                            <h4>Device id</h4>
+    						<p> <input id="id_device_id" maxlength="20" class="form-control " name="device_id" type="text" required /></p>
+                    
+                    	</div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <h4>Status</h4>
+                             <select id="id_status" name="status" class="form-control " required>
+                                
+                                <option value="" selected="selected">---------</option>
+                                <option value="A">active</option>
+                                <option value="D">not active</option>
+                           </select>
+                        </div>
+                    </div> 
+                    <div class="row">
+                	<div class="col-sm-3">
+                		<button href="/admin_home/"class="btn btn-lg btn-default btn-block" value="submit" type="submit">Submit</button>
+                	</div>
+                    <div class="col-sm-5">
+                        &nbsp;
+                    </div>
+                    </div>
+                </div>		
+			</form>
+				
+			{% endif %}
+	    </div>
+	</div> 
+	         			
+</body>
+</html>

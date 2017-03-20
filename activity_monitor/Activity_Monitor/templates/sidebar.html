@@ -1,0 +1,83 @@
+{% load static %}
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <!-- separater -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Profile Tab -->
+		{% if here == 'profile' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'profile' %}
+                <li>
+		{% endif %}
+                    <a href="/dashboard/dashboard/profile/">
+                        <span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Profile
+                        <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> -->
+                    </a>
+
+                {% if here == 'logout' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'logout' %}
+                <li>
+		{% endif %}
+                <!-- Sign out Tab -->
+                <li><a href="/user_logout/" ><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span> Sign Out</a></li>
+                
+                <!-- separater -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Map Tab -->
+		
+                <!-- Vehicle Tab -->
+		{% if here == 'Patient' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'Patient' %}
+                <li>
+		{% endif %}
+                    <a href="/dashboard/manage_patients/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-car fa-stack-1x "></i></span> Patients
+                    <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> --></a>
+
+                </li>
+
+                <!-- Drivers Tab -->
+                {% if here == 'patient' %}
+                <li class = "active">
+		{% endif %}
+		
+		{% if here == 'report' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'report' %}
+                <li>
+		{% endif %}
+                    <a href="/report/"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Report</a>
+                </li>
+
+                 <!-- Separeter -->
+                <li role="separator" class="divider"></li>
+
+                 <!-- Other Info Tab -->
+		{% if here == 'help' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'help' %}
+                <li>
+		{% endif %}
+				
+                    <a href="/help"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Help</a></li>
+		{% if here == 'about' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'about' %}
+                <li>
+		{% endif %}
+			 
+                    <a href="/about/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-compass fa-stack-1x "></i></span>About Us</a>
+
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->

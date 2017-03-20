@@ -1,0 +1,22 @@
+DELIMITER |
+
+CREATE TRIGGER pass_sms AFTER INSERT ON inbox 
+FOR EACH ROW
+BEGIN
+ DECLARE cmd1 CHAR(255);
+ DECLARE no_exists Boolean;
+       -- Check  table Activity_Monitor_gsmdevice
+
+       SELECT 1
+       INTO @no_exists
+       FROM Activity_Monitor_gsmdevice
+       WHERE inbox.SenderNumber= Activity_Monitor_gsmdevice.device_id AND inbox.Parsed=0;
+
+       IF @no_exists = 1
+       THEN
+           
+       END IF;
+END;
+
+
+DELIMITER;
